@@ -19,105 +19,40 @@ def predict():
     a = []
 
     if request.method == 'POST':
-
-        venue = request.form['venue']
-        if venue=='ACA-VDCA Stadium, Visakhapatnam':
-            a = a + [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Barabati Stadium, Cuttack':
-            a = a + [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Dr DY Patil Sports Academy, Mumbai':
-            a = a + [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Dubai International Cricket Stadium, Dubai':
-            a = a + [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Eden Gardens, Kolkata':
-            a = a + [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Feroz Shah Kotla, Delhi':
-            a = a + [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Himachal Pradesh Cricket Association Stadium, Dharamshala':
-            a = a + [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Holkar Cricket Stadium, Indore':
-            a = a + [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='JSCA International Stadium Complex, Ranchi':
-            a = a + [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='M Chinnaswamy Stadium, Bangalore':
-            a = a + [0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='MA Chidambaram Stadium, Chepauk':
-            a = a + [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0]
-
-        elif venue=='Maharashtra Cricket Association Stadium, Pune':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0]
-
-        elif venue=='Punjab Cricket Association Stadium, Mohali':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]
-
-        elif venue=='Raipur International Cricket Stadium, Raipur':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
-
-        elif venue=='Rajiv Gandhi International Stadium, Uppal':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0]
-
-        elif venue=='Sardar Patel Stadium, Motera':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0]
-
-        elif venue=='Sawai Mansingh Stadium, Jaipur':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]
-
-        elif venue=='Sharjah Cricket Stadium, Sharjah':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]
-
-        elif venue=='Sheikh Zayed Stadium, Abu-Dhabi':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]
-            
-        elif venue=='Wankhede Stadium, Mumbai':
-            a = a + [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
-            
-  
-        batting_team = request.form['batting-team']
-        if batting_team == 'Chennai Super Kings':
-            a = a + [1,0,0,0,0,0,0,0]
-        elif batting_team == 'Delhi Capitals':
-            a = a + [0,1,0,0,0,0,0,0]
-        elif batting_team == 'Kings XI Punjab':
-            a = a + [0,0,1,0,0,0,0,0]
-        elif batting_team == 'Kolkata Knight Riders':
-            a = a + [0,0,0,1,0,0,0,0]
-        elif batting_team == 'Mumbai Indians':
-            a = a + [0,0,0,0,1,0,0,0]
-        elif batting_team == 'Rajasthan Royals':
-            a = a + [0,0,0,0,0,1,0,0]
-        elif batting_team == 'Royal Challengers Bangalore':
-            a = a + [0,0,0,0,0,0,1,0]
-        elif batting_team == 'Sunrisers Hyderabad':
-            a = a + [0,0,0,0,0,0,0,1]
         
+        # Venue
+        venue = request.form['venue']
+        venues = ['ACA-VDCA Stadium, Visakhapatnam', 'Barabati Stadium, Cuttack', 
+                  'Dr DY Patil Sports Academy, Mumbai', 'Dubai International Cricket Stadium, Dubai',
+                  'Eden Gardens, Kolkata', 'Feroz Shah Kotla, Delhi', 
+                  'Himachal Pradesh Cricket Association Stadium, Dharamshala',
+                  'Holkar Cricket Stadium, Indore', 'JSCA International Stadium Complex, Ranchi', 
+                  'M Chinnaswamy Stadium, Bangalore', 'MA Chidambaram Stadium, Chepauk',
+                  'Maharashtra Cricket Association Stadium, Pune', 'Punjab Cricket Association Stadium, Mohali', 
+                  'Raipur International Cricket Stadium, Raipur', 'Rajiv Gandhi International Stadium, Uppal', 
+                  'Sardar Patel Stadium, Motera', 'Sawai Mansingh Stadium, Jaipur', 
+                  'Sharjah Cricket Stadium, Sharjah', 'Sheikh Zayed Stadium, Abu-Dhabi', 'Wankhede Stadium, Mumbai']
+        lst = [0] * 20      # [0,0, ... ,0]
+        index = venues.index(venue) 
+        lst[index] = 1      # That index will be 1. Eg: [0,0,1,0, ... ,0]
+        a = a + lst
+        
+        teams = ['Chennai Super Kings', 'Delhi Capitals', 'Kings XI Punjab', 'Kolkata Knight Riders',
+                'Mumbai Indians', 'Rajasthan Royals', 'Royal Challengers Bangalore', 'Sunrisers Hyderabad']
+        
+        # Batting Team
+        batting_team = request.form['batting-team']
+        lst = [0] * 8
+        index = teams.index(batting_team)
+        lst[index] = 1
+        a = a + lst
 
+        # Bowling Team
         bowling_team = request.form['bowling-team']
-        if bowling_team == 'Chennai Super Kings':
-            a = a + [1,0,0,0,0,0,0,0]
-        elif bowling_team == 'Delhi Capitals':
-            a = a + [0,1,0,0,0,0,0,0]
-        elif bowling_team == 'Kings XI Punjab':
-            a = a + [0,0,1,0,0,0,0,0]
-        elif bowling_team == 'Kolkata Knight Riders':
-            a = a + [0,0,0,1,0,0,0,0]
-        elif bowling_team == 'Mumbai Indians':
-            a = a + [0,0,0,0,1,0,0,0]
-        elif bowling_team == 'Rajasthan Royals':
-            a = a + [0,0,0,0,0,1,0,0]
-        elif bowling_team == 'Royal Challengers Bangalore':
-            a = a + [0,0,0,0,0,0,1,0]
-        elif bowling_team == 'Sunrisers Hyderabad':
-            a = a + [0,0,0,0,0,0,0,1]
+        lst = [0] * 8
+        index = teams.index(bowling_team)
+        lst[index] = 1
+        a = a + lst
 
         if batting_team==bowling_team and batting_team!='none' and bowling_team!='none':
             return render_template('home.html',val='Batting team and Bowling team can\'t be the same and none of the fields can be empty.')
